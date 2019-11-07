@@ -1,0 +1,38 @@
+#This program will stop if you input space or letters or if you just close the program
+while True:
+    decimalinput2 = str(int(input()))
+    decimalinput3 = set()
+    amplified = 0
+
+#filter, numbers only come once
+    for i in range(len(decimalinput2)): 
+        decimalinput3.add(decimalinput2[i])
+        decimalinput3.discard('0')
+
+#amplfied calculator
+    decimalinput3 = list(decimalinput3)
+    for element in range(len(decimalinput3)):
+        amplifiedbonus = int(decimalinput3[element])
+        amplified = amplified + amplifiedbonus 
+        
+#base calculator
+    if len(decimalinput3) == 1:
+        base = 10
+    elif len(decimalinput3) == 10:
+        base = 9
+    else: 
+        base = len(decimalinput3)
+
+#target calculator
+    target = ''
+    amplified2 = amplified
+    while amplified2 != 0:
+        if amplified2 > 1:
+            num = amplified2//base
+            remainder = amplified2%base
+            amplified2 = num
+            target += str(remainder)
+        else:
+            target = target + '1'
+            amplified2 = 0
+    print(str(amplified),str(base), target[::-1])
